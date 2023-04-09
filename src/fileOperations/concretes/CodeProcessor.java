@@ -1,11 +1,12 @@
 package fileOperations.concretes;
 
+import java.io.IOException;
 import java.util.List;
 
 import analyzer.CodeAnalyzer;
 import fileOperations.abstracts.ICommentProcessor;
 
-public class CodeProcessor {/
+public class CodeProcessor {
     private ICommentProcessor commentProcessor;
     private CodeAnalyzer codeAnalyzer;
 
