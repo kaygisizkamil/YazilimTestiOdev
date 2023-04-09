@@ -1,8 +1,11 @@
 package fileOperations.concretes;
 
+import java.util.List;
+
+import analyzer.CodeAnalyzer;
 import fileOperations.abstracts.ICommentProcessor;
 
-/*public class CodeProcessor {/
+public class CodeProcessor {/
     private ICommentProcessor commentProcessor;
     private CodeAnalyzer codeAnalyzer;
 
@@ -16,4 +19,4 @@ import fileOperations.abstracts.ICommentProcessor;
         codeAnalyzer.analyze(codeLines);
     }
 
-}*/
+}
