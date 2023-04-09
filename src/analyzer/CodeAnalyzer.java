@@ -20,7 +20,6 @@ public class CodeAnalyzer {
                 codeProcessor.processCode(line, counts);
             }
         }
-     //   System.out.println(   printCounts(counts));
     }
     private int printCounts(Map<String, Integer> counts) {
         for (String codeElement : counts.keySet()) {
