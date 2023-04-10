@@ -21,7 +21,7 @@ import org.mockito.Mockito;
 import analyzer.CodeAnalyzer;
 import fileOperations.abstracts.ICodeProcessor;
 
-public class CodeAnalyzerTest {
+public class CodeAnalyzerTest {//inside another branch
 	 private CodeAnalyzer codeAnalyzer;
 	 private ICodeProcessor mockProcessor1;
 	 private ICodeProcessor mockProcessor2;

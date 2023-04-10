@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,38 +18,58 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import fileOperations.abstracts.ICommentProcessor;
+import fileOperations.concretes.CodeProcessor;
 import fileOperations.concretes.CodeReader;
-class CodeReaderTest {
-	   @Mock//we are not doing an integration test in here since it is unit test we can mock this instead
-	   ICommentProcessor mockCommentProcessor;
-	    private CodeReader codeReader;
-	    private Path testFilePath;
+import fileOperations.concretes.CommentProcessor;
 
-	    @BeforeEach
-	    void setUp() throws IOException {
-	    	mockCommentProcessor = mock(ICommentProcessor.class);
-	        // Create a test file before each test
-	        testFilePath = Files.createTempFile(null, null);
-	        Files.write(testFilePath, Arrays.asList("line 1", "line 2", "line 3"));
-	        codeReader = new CodeReader(testFilePath.toString());
-	    }
+import org.junit.jupiter.api.*;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-	    @AfterEach
-	    void tearDown() throws IOException {
-	        Files.deleteIfExists(testFilePath);
-	    }
+import analyzer.CodeAnalyzer;
 
-	    @Test
-	    void testReadCode() throws IOException {
-	    	when(mockCommentProcessor.processLineDeleteComments(anyString()))
-	    		.thenAnswer(invocation->invocation.getArgument(0));
-	        /*when it is called with any input string 
-	         * it is returning the argument that
-	         *  was passed into the method (invocation.getArgument(0)) 
-	         *  which is equivalent to the input string*/
-	        // Read the code from the file using the CodeReader instance and the mock comment processor
-	        List<String> codeLines = codeReader.readCode(mockCommentProcessor);
-	        assertEquals(Arrays.asList("line 1", "line 2", "line 3"), codeLines);
-	}
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
+import static org.mockito.Mockito.*;
+public class CodeReaderTest {
+
+    private CodeProcessor codeProcessor;
+    String filePath;
+
+    @Mock
+    private ICommentProcessor commentProcessor;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        filePath = "tests/resources/Deneme.java";
+    }
+
+    @Test
+    public void testReadFile() throws IOException {
+        CodeReader codeReader = new CodeReader(filePath);
+        List<String> codeLines = codeReader.readCode(new CommentProcessor());
+/*
+ * package resources;
+public class Deneme {
+public int x;
+public int y;
+public Deneme(int x,int y) {
+this.x = x;
+this.y = y;
+}*/
+        assertEquals(35, codeLines.size());
+        assertEquals("public class Deneme {", codeLines.get(1));
+        assertEquals("public int x;", codeLines.get(2));
+        assertEquals("public Deneme(int x,int y) {", codeLines.get(4));
+        // ...
+        assertEquals("}", codeLines.get(34));
+    }
+
+   
 }
