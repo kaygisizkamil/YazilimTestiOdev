@@ -27,7 +27,7 @@ public class LogicalOperatorCounter implements ICodeProcessor {
             counts.put(operator, counts.getOrDefault(operator, 0) + 1);
         }
     }
-    public int logicalOperatorCount(){
+    public int getLogicalOperatorCount(){
         return count;
     }
 

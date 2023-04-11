@@ -39,7 +39,7 @@ public class LogicalOperatorCounterTest {
             LogicalOperatorCounter operatorCounter = new LogicalOperatorCounter();
             Map<String, Integer> counts = new HashMap<>();
             operatorCounter.processCode(codeLine, counts);
-            Assertions.assertEquals(expectedCount, operatorCounter.logicalOperatorCount(),
+            Assertions.assertEquals(expectedCount, operatorCounter.getLogicalOperatorCount(),
                     "Incorrect logical operator count for code line: " + codeLine);
         }
     }
@@ -75,7 +75,7 @@ public class LogicalOperatorCounterTest {
         }
 
         operatorCounter.processCode(codeLine, counts);
-        Assertions.assertEquals(expectedCount, operatorCounter.logicalOperatorCount(),
+        Assertions.assertEquals(expectedCount, operatorCounter.getLogicalOperatorCount(),
                 "Incorrect logical operator count for code line: " + codeLine);
     }
 }

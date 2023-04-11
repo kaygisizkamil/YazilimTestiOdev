@@ -5,31 +5,107 @@ import java.util.List;
 import java.util.Map;
 
 import fileOperations.abstracts.ICodeProcessor;
+import thingsToSearch.BinaryOperatorCounter;
+import thingsToSearch.FunctionCounter;
+import thingsToSearch.LogicalOperatorCounter;
+import thingsToSearch.OperandCounter;
+import thingsToSearch.RelationalOperatorCounter;
+import thingsToSearch.UnaryOperatorCounter;
 
-public class CodeAnalyzer {//inside another branch dont forget
-    private List<ICodeProcessor> codeProcessors;
+public class CodeAnalyzer {
+	    private List<ICodeProcessor> codeProcessors;
 
-    public CodeAnalyzer(List<ICodeProcessor> codeProcessors) {
-        this.codeProcessors = codeProcessors;
-    }
+	    public CodeAnalyzer(List<ICodeProcessor> codeProcessors) {
+	        this.codeProcessors = codeProcessors;
+	    }
 
-    public void analyze(List<String> codeLines) {
-    	Map<String,Integer>counts=new HashMap<>();
-        for (String line : codeLines) {
-            for (ICodeProcessor codeProcessor : codeProcessors) {
-                codeProcessor.processCode(line, counts);
-            }
-        }
-    }
-    private int printCounts(Map<String, Integer> counts) {
-        for (String codeElement : counts.keySet()) {
-            System.out.println(codeElement + ": " + counts.get(codeElement));
+	    public void analyze(List<String> codeLines) {
+	        Map<String, Integer> counts = new HashMap<>();
 
-        }
-        int count=0;
-        for(int i:counts.values()){
-            count+=i;
-        }
-        return count;
-    }
+	        for (String line : codeLines) {
+	            for (ICodeProcessor codeProcessor : codeProcessors) {
+	                codeProcessor.processCode(line, counts);
+	            }
+	        }
+
+	     //   System.out.println(   printCounts(counts));
+	    }
+
+	    public int getArithmetic() {
+	        int total = 0;
+
+	        return getBinaryCount()+getUnaryOperatorCount();/// total;
+
+	    }
+	    public int getBinaryCount(){
+	            int total=0;
+	            for (ICodeProcessor processor : codeProcessors) {
+	                if (processor instanceof BinaryOperatorCounter) {
+	                    total += ((BinaryOperatorCounter) processor).getBinaryCount();
+
+	                }
+	            }
+	            return total;
+	        }
+
+
+	    public int getFunctionCount(){
+	        int total=0;
+	        for (ICodeProcessor processor : codeProcessors) {
+	            if (processor instanceof FunctionCounter) {
+	                total += ((FunctionCounter) processor).getFunctionCount();
+	            }
+	        }
+	        return total;
+	    }
+	    public int getUnaryOperatorCount() {
+	        int total = 0;
+	        for (ICodeProcessor processor : codeProcessors) {
+	            if (processor instanceof UnaryOperatorCounter) {
+	                total += ((UnaryOperatorCounter) processor).getUnaryOperatorCount();
+	            }
+	        }
+	        return total;
+	    }
+	    public int getLogicalOperatorCount() {
+	        int total = 0;
+	        for (ICodeProcessor processor : codeProcessors) {
+	            if (processor instanceof LogicalOperatorCounter) {
+	                total += ((LogicalOperatorCounter) processor).getLogicalOperatorCount();
+	            }
+	        }
+	        return total;
+	    }
+	    public int getRelationalCount(){
+	        int total=0;
+	        for(ICodeProcessor processor:codeProcessors){
+	            if(processor instanceof RelationalOperatorCounter){
+	                total+=((RelationalOperatorCounter)processor).getRelationalCount();
+	            }
+	        }
+	        return  total;
+	    }
+
+	    public int getOperandCount(){
+	        int total=0;
+	        for(ICodeProcessor processor:codeProcessors){
+	            if(processor instanceof OperandCounter){
+	                total+=((OperandCounter)processor).getOperandCount();
+	            }
+	        }
+	        return  total;
+	    }
+
+	   /* private int printCounts(Map<String, Integer> counts) {
+	        for (String codeElement : counts.keySet()) {
+	            System.out.println(codeElement + ": " + counts.get(codeElement));
+
+	        }
+	        int count=0;
+	        for(int i:counts.values()){
+	            count+=i;
+	        }
+	        return count;
+	    }*/
+	
 }
