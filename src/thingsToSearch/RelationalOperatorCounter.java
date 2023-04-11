@@ -1,4 +1,4 @@
-package unitTests.thingsToSearch;
+package thingsToSearch;
 
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -7,6 +7,12 @@ import java.util.regex.Pattern;
 import fileOperations.abstracts.ICodeProcessor;
 
 public class RelationalOperatorCounter implements ICodeProcessor {
+	/*<
+<=
+>
+>=
+==
+!=*/
     private static final String RELATIONAL_OPERATORS_REGEX = "(?<!\\S)(==|!=|[<>]=?)(?!\\S)";
     private int count=0;
     @Override
@@ -17,6 +23,8 @@ public class RelationalOperatorCounter implements ICodeProcessor {
             count++;
             String operator = matcher.group();
             counts.put(operator, counts.getOrDefault(operator, 0) + 1);
+        //    System.out.println("Added operator: " + operator + ", count: " + counts.get(operator));
+
         }
     }
   public int getRelationalCount(){

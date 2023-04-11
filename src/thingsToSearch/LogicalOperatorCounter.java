@@ -11,7 +11,7 @@ public class LogicalOperatorCounter implements ICodeProcessor {
 	//it founds &&,||,! logical operators
    //if there is no space before or after will return  operator using regexes become really hard to do
 	//please be sure your code auto corrected inside the compiler before running the test
-	//operatorlerden once bosluk olmazsa eksik  sayi dondurur lutfen compileriniz ile formata dikkat ettikten
+	//operatorlerden once bosluk olmazsa eksik  sayi dondurur compileriniz ile formata dikkat ettikten
 	//sonra deneyin
     private static final String LOGICAL_OPERATORS_REGEX = "(?<!(\\w|[\"']))(!|&&|\\|\\|)(?!(\\w|[\"'])|(?<=!)=(?!(\\w|[\"'])))";
    private int count=0;
