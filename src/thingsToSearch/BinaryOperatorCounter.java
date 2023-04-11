@@ -11,6 +11,8 @@ public class BinaryOperatorCounter  implements ICodeProcessor {
 Bitwise operators: &, |, ^, ~
 Assignment operators: =*/
     private static final String BINARY_OPERATORS_REGEX = "(?<![\\w])[-+*/%&|^=<>]{1,2}(?![\\w=])";
+ //   private static final String BINARY_OPERATORS_REGEX = "(?<![\\w])[-+*/%&|^=<>]{1,2}(?![\\w=])";
+
 
     private int count =0;
 
@@ -28,7 +30,7 @@ Assignment operators: =*/
     }
   // best i can write was this it matches with pairs so i needed return like this
     public int getBinaryCount(){
-        return count/2+1;
+        return count / 2;
     }
 
     @Override

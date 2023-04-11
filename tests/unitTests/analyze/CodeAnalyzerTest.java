@@ -16,6 +16,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import analyzer.CodeAnalyzer;
@@ -23,7 +24,9 @@ import fileOperations.abstracts.ICodeProcessor;
 
 public class CodeAnalyzerTest {//inside another branch
 	 private CodeAnalyzer codeAnalyzer;
+	 @Mock
 	 private ICodeProcessor mockProcessor1;
+	 @Mock
 	 private ICodeProcessor mockProcessor2;
     @BeforeEach
     public void setUp() {
