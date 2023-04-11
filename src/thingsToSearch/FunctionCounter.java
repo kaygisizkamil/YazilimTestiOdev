@@ -15,19 +15,16 @@ public class FunctionCounter implements ICodeProcessor {
     public void processCode(String codeLine, Map<String, Integer> counts) {
         Matcher functionMatcher = FUNCTION_PATTERN.matcher(codeLine);
         while (functionMatcher.find()) {
-            /*when counts.merge("function", 1, Integer::sum); is called, it first checks if the "function" key is
-             already in the map. If it is, the Integer::sum function is used to combine the current value with the new value (which is 1 in this case).
-            If it's not, a new entry is created with the "function" key and the value of 1.*/
-            counts.merge("function", 1, Integer::sum);
+            if (counts.containsKey("function")) {
+                counts.put("function", counts.get("function") + 1);
+            } else {
+                counts.put("function", 1);
+            }
             totalCount++;
         }
-        /* is same with   if (counts.containsKey("function")) {
-            counts.put("function", counts.get("function") + 1);
-        } else {
-            counts.put("function", 1);
-        }*/
     }
-    public int getFunctionCount(){
+
+    public int getFunctionCount() {
         return totalCount;
     }
 
