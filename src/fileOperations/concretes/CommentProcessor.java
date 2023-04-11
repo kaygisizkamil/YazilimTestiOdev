@@ -1,3 +1,14 @@
+/**
+*
+* @author Kamil Kaygısız kamil.kaygisiz1@ogr.sakarya.edu.tr
+* @since 03.04.2023
+* <p>
+* Bu sinif icinde tek cok satirli commentlerin satir okunurken discard edilmesini ve dogru sayida
+* bulunmasina yardimci olur
+* </p>
+*/
+
+
 package fileOperations.concretes;
 
 import java.util.regex.Matcher;

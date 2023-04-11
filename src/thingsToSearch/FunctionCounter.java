@@ -1,3 +1,12 @@
+/**
+*
+* @author Kamil Kaygısız kamil.kaygisiz1@ogr.sakarya.edu.tr
+* @since 03.04.2023
+* <p>
+*Bir satirda Fonksiyon sayisini return eder
+* </p>
+*/
+
 package thingsToSearch;
 
 import java.util.Map;

@@ -1,3 +1,14 @@
+/**
+*
+* @author Kamil Kaygısız kamil.kaygisiz1@ogr.sakarya.edu.tr
+* @since 03.04.2023
+* <p>
+* Bir satir okur ve okunan satiri commentProcessore gonderir loosecoupling sayesinde implement eden class
+* gerekli gorevleri yerine getircektir
+* </p>
+*/
+
+
 package fileOperations.concretes;
 
 import java.io.BufferedReader;

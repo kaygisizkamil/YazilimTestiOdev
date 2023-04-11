@@ -6,6 +6,17 @@ import java.util.regex.Pattern;
 
 import fileOperations.abstracts.ICodeProcessor;
 
+/**
+*
+* @author Kamil Kaygısız kamil.kaygisiz1@ogr.sakarya.edu.tr
+* @since 03.04.2023
+* <p>
+* B* it matches with Arithmetic operators: +, -, *, /, %
+Bitwise operators: &, |, ^, ~
+Assignment operators: =
+* </p>
+*/
+
 public class BinaryOperatorCounter  implements ICodeProcessor {
 	/* it matches with Arithmetic operators: +, -, *, /, %
 Bitwise operators: &, |, ^, ~
